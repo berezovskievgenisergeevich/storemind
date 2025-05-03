@@ -2,12 +2,13 @@ package web.pages;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
+import lombok.val;
 import web.components.ActiveProcessWindow;
 import web.components.BackToShoppingCartWindow;
 import web.components.LoadingDialogWindow;
 import web.data.model.Customer;
 
-import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -37,8 +38,10 @@ public class OrderConfirmation {
 
     @Step("get created Order Id and close 'Order Created Successfully' window")
     public String getOrderId() {
+        new LoadingDialogWindow().waitLoading();
         String orderId = $("[data-testid='success-checkout']").should(exist).getAttribute("data-id");
-        $("[data-testid='finish-success-checkout']").click();
+        $("[data-testid='finish-success-checkout']")
+                .should(exist).shouldBe(interactable).shouldBe(enabled).click();
         return orderId;
     }
 
@@ -80,8 +83,8 @@ public class OrderConfirmation {
     //TODO change css -> ticket
     @Step("click to 'Back to Catalog'")
     public BackToShoppingCartWindow clickBackToShoppingCart() {
-        $(byText("Bestellung ändern")).click();
         new LoadingDialogWindow().waitLoading();
+        $(byText("Bestellung ändern")).click();
         return new BackToShoppingCartWindow();
     }
 

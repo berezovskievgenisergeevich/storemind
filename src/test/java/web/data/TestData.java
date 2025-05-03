@@ -4,12 +4,14 @@ import com.github.javafaker.Faker;
 import config.LocalizationConfig;
 import config.TestsConfig;
 import helpers.CustomerProvider;
+import helpers.RandomGenerator;
 import helpers.StoreProvider;
 import org.aeonbits.owner.ConfigFactory;
 import web.components.Language;
 import web.data.model.Customer;
 import web.data.model.Store;
 
+import java.util.List;
 import java.util.Locale;
 
 public class TestData {
@@ -30,6 +32,8 @@ public class TestData {
     public final String SEARCH_ARTICLE_ONE_PART_OF_NO = "298950";
     public final String SEARCH_ARTICLE_EAN = "4048872221235";
     public final String ARTICLE_WITH_MONOGRAM_EAN = "4048872080283";
+    public final List<String> forbiddenMonogramOptions = List.of("SS", "HH", "HJ", "KZ", "NS", "SA");
+    public final String MONOGRAM = RandomGenerator.getRandomMonogram(faker, forbiddenMonogramOptions);
 
 
 }

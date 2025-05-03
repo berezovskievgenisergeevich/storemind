@@ -1,5 +1,6 @@
 package web.pages;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import web.components.LoadingDialogWindow;
 import web.data.model.Customer;
@@ -7,6 +8,8 @@ import web.data.model.Customer;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ShoppingCart {
+
+    SelenideElement selectStoreDeliveryButton = $("[data-testid='order-type-STORE_DELIVERY-button']");
 
 
     public ShoppingCart clickToShoppingCart() {
@@ -36,8 +39,12 @@ public class ShoppingCart {
 
     @Step("select 'Store Delivery'")
     public ShoppingCart selectStoreDelivery() {
-        $("[data-testid='order-type-STORE_DELIVERY-button']").click();
+        selectStoreDeliveryButton.click();
         return this;
+    }
+
+    public SelenideElement getStoreDeliveryChoiceElement() {
+        return selectStoreDeliveryButton.parent();
     }
 
     @Step("click to 'Existing Customer'")

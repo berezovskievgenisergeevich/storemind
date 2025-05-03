@@ -1,5 +1,6 @@
 package web.pages.order;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import web.pages.ShoppingCart;
 
@@ -16,5 +17,9 @@ public class Order {
     public ShoppingCart clickProceedEditing(){
         $("[data-testid='move-order-to-next-step']").click();
         return new ShoppingCart();
+    }
+
+    public SelenideElement getMonogramElement() {
+        return $("[data-testid='order-monogram-article']");
     }
 }

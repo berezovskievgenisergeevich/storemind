@@ -226,6 +226,19 @@ public class StoreDeliveryTest extends BaseTest {
         $("body").shouldHave(text(testData.APP_TEXT.cockpitTitle()));
     }
 
+    @Test
+    @Tags({@Tag("order"), @Tag("store_order"), @Tag("monogram"), @Tag("regression"), @Tag("ui")})
+    @DisplayName("Monogram delivery cannot be delivered to the store")
+    void checkMonogramAndStoreOrder() throws Exception {
+        new Login().doLogin(testData.stores[0])
+                .searchArticleByScanner(testData.ARTICLE_WITH_MONOGRAM_EAN)
+                .addMonogramToArticle(testData.MONOGRAM)
+                .clickAddArticleToShoppingCart();
+        new ShoppingCart().clickToShoppingCart()
+                .clickNext().getStoreDeliveryChoiceElement()
+                .shouldHave(text(testData.APP_TEXT.monogramCantBeDeliveredToStoreText()));
+    }
+
 
     OrderConfirmation loginAddArticleSelectCustomer() {
         new Login().doLogin(testData.stores[0])

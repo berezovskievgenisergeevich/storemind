@@ -25,6 +25,7 @@ public class CreateNewCustomer {
 
     @Step("select customer and click 'Next'")
     public OrderConfirmation clickNextInCreateNewOrder() {
+        new LoadingDialogWindow().waitLoading();
         $("[data-testid='submit-button']").click();
         return new OrderConfirmation();
     }

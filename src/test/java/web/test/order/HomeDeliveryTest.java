@@ -12,7 +12,6 @@ import web.test.BaseTest;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
 
 @Story("[UI] Home delivery order")
 public class HomeDeliveryTest extends BaseTest {
@@ -164,14 +163,40 @@ public class HomeDeliveryTest extends BaseTest {
 
     @Test
     @Tags({@Tag("order"), @Tag("home_order"), @Tag("monogram"), @Tag("regression"), @Tag("ui")})
-    @DisplayName("")
-    void monogram() {
+    @DisplayName("check monogram forbidden letters combination")
+    void checkMonogramRestrictionText() {
         new Login().doLogin(testData.stores[0])
                 .searchArticleByScanner(testData.ARTICLE_WITH_MONOGRAM_EAN)
-                .addMonogramWithForbiddenOptions();
-        sleep(1000);
-               /* .getMonogramRestrictionWindow()
-                .shouldHave(text(testData.APP_TEXT.monogramRestrictionsText()));*/
+                .addMonogramWithForbiddenOptions()
+                .getMonogramRestrictionWindow()
+                .shouldHave(text(testData.APP_TEXT.monogramRestrictionsText()));
+    }
+
+    @Test
+    @Tags({@Tag("order"), @Tag("home_order"), @Tag("monogram"), @Tag("regression"), @Tag("ui")})
+    @DisplayName("check monogram Letters added to Article Info Window")
+    void checkMonogramTextAddedToArticleInfoWindow() {
+        new Login().doLogin(testData.stores[0])
+                .searchArticleByScanner(testData.ARTICLE_WITH_MONOGRAM_EAN)
+                .addMonogramToArticle(testData.MONOGRAM)
+                .editMonogramButton.shouldHave(text(testData.MONOGRAM));
+    }
+
+    @Test
+    @Tags({@Tag("order"), @Tag("home_order"), @Tag("monogram"), @Tag("regression"), @Tag("ui")})
+    @DisplayName("check Create Order With Monogram")
+    void checkCreateOrderWithMonogram() throws Exception {
+        new Login().doLogin(testData.stores[0])
+                .searchArticleByScanner(testData.ARTICLE_WITH_MONOGRAM_EAN)
+                .addMonogramToArticle(testData.MONOGRAM)
+                .clickAddArticleToShoppingCart();
+        String orderId = new ShoppingCart().clickToShoppingCart()
+                .selectHomeDeliveryAndExistingCustomer(testData.SEARCH_CUSTOMER)
+                .createPrepaymentOrder();
+
+        new Cockpit().openFinishedTab().getOrder(orderId)
+                .openOrder().getMonogramElement()
+                .shouldHave(text(testData.MONOGRAM));
 
     }
 

@@ -100,5 +100,8 @@ public interface LocalizationConfig extends Config {
     @Config.Key("monogram.restrictions.text")
     String monogramRestrictionsText();
 
+    @Config.Key("monogram.store_order")
+    String monogramCantBeDeliveredToStoreText();
+
 
 }

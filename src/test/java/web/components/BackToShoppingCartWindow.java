@@ -3,20 +3,28 @@ package web.components;
 import io.qameta.allure.Step;
 import web.pages.ShoppingCart;
 
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.interactable;
 import static com.codeborne.selenide.Selenide.$;
 
 public class BackToShoppingCartWindow {
 
+    private final LoadingDialogWindow loadingDialogWindow = new LoadingDialogWindow();
+
     @Step
     public ShoppingCart backToShoppingCart() {
-        $("[data-testid='restart-checkout-cancel']").click();
+        loadingDialogWindow.waitLoading();
+        $("[data-testid='restart-checkout-cancel']")
+                .hover().should(exist)
+                .shouldBe(interactable).click();
         return new ShoppingCart();
     }
 
     @Step
     public ShoppingCart backToShoppingCartAndChangeDeliveryType() {
-        new LoadingDialogWindow().waitLoading();
-        $("[data-testid='restart-checkout-accept']").click();
+        loadingDialogWindow.waitLoading();
+        $("[data-testid='restart-checkout-accept']").hover().should(exist)
+                .shouldBe(interactable).click();
         return new ShoppingCart();
     }
 }

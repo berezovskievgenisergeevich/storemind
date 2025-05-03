@@ -1,5 +1,7 @@
 package helpers;
 
+import com.github.javafaker.Faker;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -45,5 +47,21 @@ public class RandomGenerator {
 
     public String getRandomString(List<String> list) {
         return list.get(getRandomNumber(0, list.size()));
+    }
+
+    public static String getRandomMonogram(Faker faker, List<String> excludeOptions) {
+        String randomMonogram = "";
+        int countOfMonogramLetters = new RandomGenerator().getRandomNumber(1, 4);
+        if (countOfMonogramLetters == 1)
+            return faker.letterify("?").toUpperCase();
+        else if (countOfMonogramLetters == 2) {
+            do {
+                randomMonogram = faker.letterify("??").toUpperCase();
+            } while (excludeOptions.contains(randomMonogram));
+            return randomMonogram;
+        } else if (countOfMonogramLetters == 3) {
+            return faker.letterify("???").toUpperCase();
+        }
+        return randomMonogram;
     }
 }
