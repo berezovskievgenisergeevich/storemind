@@ -49,7 +49,6 @@ public class Login {
 
     @Step("Enter Customer Id: {customerId}")
     public Login enterCustomerId(String customerId) {
-        new LoadingDialogWindow().waitLoading();
         $("[name='merchant']").val(customerId);
         return this;
     }
