@@ -17,10 +17,10 @@ public class CustomerSearch {
     }
 
     @Step("search customer by Email, value: {customer}")
-    public CreateNewCustomer searchCustomerByEmail(Customer customer) {
+    public CustomerInfo searchCustomerByEmail(Customer customer) {
         $("[name='email']").val(customer.getEmail()).pressEnter();
         new LoadingDialogWindow().waitLoading();
-        return new CreateNewCustomer();
+        return new CustomerInfo();
     }
 
     @Step("search customer and open Order Confirmation page")
@@ -49,7 +49,7 @@ public class CustomerSearch {
     // todo change css
     @Step("Search Customer By Scanner. Customer Id is: {id}")
     public CustomerInfo searchCustomerByScanner(String id) {
-     //   $("[data-testid='customer-scanner']").click();
+        //   $("[data-testid='customer-scanner']").click();
         new LoadingDialogWindow().waitLoading();
         $("[data-testid='scanner-icon']").click();
         new Scanner().search(id);

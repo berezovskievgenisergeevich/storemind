@@ -11,8 +11,8 @@ import wmf.web.data.WMFTestData;
 @Tag("WMF")
 @Tag("all")
 public class WMFTest extends BaseTest {
-    WMFTestData testData = new WMFTestData();
-    static WMFConfig projectConfig;
+    public WMFTestData testData = new WMFTestData();
+    public static WMFConfig projectConfig;
 
     @BeforeAll
     static void setUpProject() {

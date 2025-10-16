@@ -1,11 +1,15 @@
 package wmf.web.pages;
 
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import se.helpers.RandomGenerator;
 import se.web.pages.Cockpit;
 import se.web.pages.CustomerSearch;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class WMFCockpit extends Cockpit {
 
@@ -22,5 +26,16 @@ public class WMFCockpit extends Cockpit {
     public CustomerSearch clickCustomerSearch() {
         $(byText("Kunden suchen")).click();
         return new CustomerSearch();
+    }
+
+    //TODO change css
+    @Step("get Avantgarde links elements")
+    public ElementsCollection getAvantgardeElements() {
+        return $$("[class='MuiBox-root css-rbtf7a'] ul li");
+    }
+
+    @Step("get random Avantgarde")
+    public SelenideElement getRandomAvantgardeElem() {
+        return getAvantgardeElements().get(new RandomGenerator().getRandomNumber(0, getAvantgardeElements().size()));
     }
 }

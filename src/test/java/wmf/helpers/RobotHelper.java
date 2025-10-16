@@ -1,9 +1,18 @@
 package wmf.helpers;
 
+import com.codeborne.selenide.Selenide;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class RobotHelper {
+
+    public static void switchToNewTab() {
+        var driver = Selenide.webdriver().driver().getWebDriver();
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(tabs.size() - 1));
+    }
 
     public static void pressEnter(Robot robot) {
         robot.keyPress(KeyEvent.VK_ENTER);

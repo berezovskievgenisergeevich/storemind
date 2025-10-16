@@ -1,3 +1,4 @@
+/*clean test -Dtag='${PROJECT} & ${TASK}' -Dbrowser=${BROWSER} -Dthreads=${THREADS} -Dremote=true*/
 plugins {
     id 'java-library'
     id 'io.qameta.allure' version '2.12.0'

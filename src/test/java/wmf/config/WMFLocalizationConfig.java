@@ -102,4 +102,8 @@ public interface WMFLocalizationConfig extends Config {
 
     @Config.Key("monogram.store_order")
     String monogramCantBeDeliveredToStoreText();
+
+    @Config.Key("customer.edit.edit_address_text")
+    String customerEditAddressText();
+
 }

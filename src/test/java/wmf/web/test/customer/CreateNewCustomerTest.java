@@ -1,10 +1,11 @@
-package wmf.web.test;
+package wmf.web.test.customer;
 
 import org.junit.jupiter.api.*;
 import se.helpers.CustomerProvider;
 import se.web.data.model.Customer;
 import se.web.pages.Login;
 import wmf.web.pages.WMFCockpit;
+import wmf.web.test.WMFTest;
 
 public class CreateNewCustomerTest extends WMFTest {
     @Test

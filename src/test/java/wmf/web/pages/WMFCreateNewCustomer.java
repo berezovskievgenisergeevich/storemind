@@ -4,6 +4,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.val;
+import wmf.helpers.RobotHelper;
 import wmf.web.components.WMFLoginPopUp;
 
 import java.awt.*;
@@ -24,7 +25,7 @@ public class WMFCreateNewCustomer {
 
     WMFCreateNewCustomer(String login, String pass) {
         new WMFLoginPopUp().doLogin(login, pass);
-        switchToNewTab();
+        RobotHelper.switchToNewTab();
         acceptCookie();
         Selenide.webdriver().driver().getWebDriver().switchTo().frame($("[id='ucr-iframe']"));
     }
@@ -107,11 +108,11 @@ public class WMFCreateNewCustomer {
     }
 
 
-    private static void switchToNewTab() {
+/*    private static void switchToNewTab() {
         var driver = Selenide.webdriver().driver().getWebDriver();
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(tabs.size() - 1));
-    }
+    }*/
 
 
     @Step("accept Cookie")

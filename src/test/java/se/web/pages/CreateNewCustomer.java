@@ -274,8 +274,9 @@ public class CreateNewCustomer {
         return clickNextInCreateNewOrder();
     }
 
-    void cleanUpField(SelenideElement element) {
+    public CreateNewCustomer cleanUpField(SelenideElement element) {
         element.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+        return this;
     }
 
 }
