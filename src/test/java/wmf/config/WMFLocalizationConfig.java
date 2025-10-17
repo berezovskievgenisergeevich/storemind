@@ -106,4 +106,10 @@ public interface WMFLocalizationConfig extends Config {
     @Config.Key("customer.edit.edit_address_text")
     String customerEditAddressText();
 
+    @Config.Key("article.not_found.message")
+    String articleNotFoundText();
+
+    @Config.Key("catalog.no_articles_found.text")
+    String catalogNoArticlesFoundText();
+
 }

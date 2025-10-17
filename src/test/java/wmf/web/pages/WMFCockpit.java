@@ -4,6 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import se.helpers.RandomGenerator;
+import se.web.pages.Catalog;
 import se.web.pages.Cockpit;
 import se.web.pages.CustomerSearch;
 
@@ -26,6 +27,13 @@ public class WMFCockpit extends Cockpit {
     public CustomerSearch clickCustomerSearch() {
         $(byText("Kunden suchen")).click();
         return new CustomerSearch();
+    }
+
+    //TODO change css
+    @Step("open Catalog")
+    public WMFCatalog openCatalog() {
+        $(byText("Katalog öffnen")).click();
+        return new WMFCatalog();
     }
 
     //TODO change css

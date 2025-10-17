@@ -26,4 +26,9 @@ public class WMFTestData {
     public final Customer SEARCH_CUSTOMER = WMFCustomerProvider.searchCustomer;
     public final Customer SEARCH_NOT_EXISTING_CUSTOMER = WMFCustomerProvider.notExistingCustomer;
     public final Customer SEARCH_MULTIPLE_CUSTOMERS = WMFCustomerProvider.multipleSearchCustomer;
+    public final String SEARCH_ARTICLE_NAME = "KAISER";
+    public final String SEARCH_ARTICLE_FULL_NO = "3201112501";
+    public final String SEARCH_ARTICLE_EAN = "4000530691651";
+    public final String SEARCH_ARTICLE_INVALID_EAN = "40005306916510";
+    public final String SEARCH_ARTICLE_INVALID_NAME = "invalid_article_name";
 }
