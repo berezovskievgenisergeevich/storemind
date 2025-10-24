@@ -4,9 +4,9 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import se.helpers.RandomGenerator;
-import se.web.pages.Catalog;
 import se.web.pages.Cockpit;
 import se.web.pages.CustomerSearch;
+import wmf.web.components.appointment.NewAppointmentWindow;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -42,8 +42,20 @@ public class WMFCockpit extends Cockpit {
         return $$("[class='MuiBox-root css-rbtf7a'] ul li");
     }
 
+    //TODO change css
+    @Step("click Create new Appointment")
+    public NewAppointmentWindow clickCreateNewAppointment() {
+        $(byText("Termin erstellen")).click();
+        return new NewAppointmentWindow();
+    }
+
     @Step("get random Avantgarde")
     public SelenideElement getRandomAvantgardeElem() {
         return getAvantgardeElements().get(new RandomGenerator().getRandomNumber(0, getAvantgardeElements().size()));
+    }
+    //TODO change css
+    @Step("get Appointments Today")
+    public String getAppointmentsCountToday() {
+        return $(byText("Termine heute")).parent().$("div").text();
     }
 }
