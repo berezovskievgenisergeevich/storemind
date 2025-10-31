@@ -108,4 +108,11 @@ public class OrderConfirmation {
         return new Cockpit();
     }
 
+
+    @Step("Hide article list")
+    public OrderConfirmation hideArticleList() {
+        $("[data-testid='KeyboardArrowUpIcon']").click();
+        return this;
+    }
+
 }
