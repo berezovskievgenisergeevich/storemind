@@ -44,7 +44,7 @@ public class CustomerProvider {
     }
 
 
-    Salutation getRandomSalutation() {
+    public Salutation getRandomSalutation() {
         return (new RandomGenerator().getRandomNumber(0, 2) == 0) ? Salutation.He : Salutation.She;
     }
 

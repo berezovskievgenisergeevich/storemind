@@ -30,11 +30,11 @@ public class TestData {
     public final Customer SEARCH_NOT_EXISTING_CUSTOMER = CustomerProvider.notExistingCustomer;
     public final String SEARCH_MULTIPLE_CUSTOMERS = "Eugene";
     public final String SEARCH_ARTICLE_NAME = "Polo";
-    public final String SEARCH_ARTICLE_FULL_NO = "01.298950.0035";
-    public final String SEARCH_ARTICLE_TWO_PARTS_OF_NO = "01.298950";
-    public final String SEARCH_ARTICLE_ONE_PART_OF_NO = "298950";
-    public final String SEARCH_ARTICLE_EAN = "4048872221235";
-    public final String ARTICLE_WITH_MONOGRAM_EAN = "4048872080283";
+    public final String SEARCH_ARTICLE_FULL_NO = "01.474980.0001";
+    public final String SEARCH_ARTICLE_TWO_PARTS_OF_NO = "01.474980";
+    public final String SEARCH_ARTICLE_ONE_PART_OF_NO = "474980";
+    public final String SEARCH_ARTICLE_EAN = "4048869132797";
+    public final String ARTICLE_WITH_MONOGRAM_EAN = "4048872002513";
     public final List<String> forbiddenMonogramOptions = List.of("SS", "HH", "HJ", "KZ", "NS", "SA");
     public final String MONOGRAM = RandomGenerator.getRandomMonogram(faker, forbiddenMonogramOptions);
 

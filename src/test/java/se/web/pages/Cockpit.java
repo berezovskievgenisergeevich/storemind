@@ -37,6 +37,7 @@ public class Cockpit {
     @Step("click Create new Customer")
     public CreateNewCustomer clickCreateNewCustomer() {
         $("[data-testid='customer-registration']").click();
+        new LoadingDialogWindow().waitLoading();
         return new CreateNewCustomer();
     }
 

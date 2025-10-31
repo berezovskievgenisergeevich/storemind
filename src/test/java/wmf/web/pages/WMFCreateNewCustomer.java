@@ -108,13 +108,6 @@ public class WMFCreateNewCustomer {
     }
 
 
-/*    private static void switchToNewTab() {
-        var driver = Selenide.webdriver().driver().getWebDriver();
-        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(tabs.size() - 1));
-    }*/
-
-
     @Step("accept Cookie")
     private WMFCreateNewCustomer acceptCookie() {
         $("[id='onetrust-accept-btn-handler']").click();

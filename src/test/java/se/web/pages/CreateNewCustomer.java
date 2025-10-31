@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.interactable;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class CreateNewCustomer {
 
@@ -158,6 +159,7 @@ public class CreateNewCustomer {
     public CreateNewCustomer signForm() {
         $("[data-testid='signature']").click();
         $("[data-testid='signature-modal']").should(exist).shouldBe(interactable);
+        new LoadingDialogWindow().waitLoading();
         $("[data-testid='signature-canvas']").click();
         $("[data-testid='confirm-button']").click();
         return this;

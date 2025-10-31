@@ -34,4 +34,7 @@ public interface WMFConfig extends Config {
     @Key("create.customer.pass")
     String createCustomerPass();
 
+    @Key("online.appointment.url")
+    String onlineAppointmentUrl();
+
 }

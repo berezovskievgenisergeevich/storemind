@@ -7,8 +7,10 @@ import se.web.data.model.Customer;
 import se.web.data.model.Store;
 import wmf.config.WMFConfig;
 import wmf.config.WMFLocalizationConfig;
+import wmf.helpers.AppointmentsProvider;
 import wmf.helpers.WMFCustomerProvider;
 import wmf.helpers.WmfStoreProvider;
+import wmf.web.data.model.AppointmentModel;
 
 import java.util.Locale;
 
@@ -31,4 +33,5 @@ public class WMFTestData {
     public final String SEARCH_ARTICLE_EAN = "4000530691651";
     public final String SEARCH_ARTICLE_INVALID_EAN = "40005306916510";
     public final String SEARCH_ARTICLE_INVALID_NAME = "invalid_article_name";
+    public final AppointmentModel RANDOM_APPOINTMENT = AppointmentsProvider.getRandomAppointment();
 }

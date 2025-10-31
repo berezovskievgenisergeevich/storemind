@@ -14,6 +14,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class WMFCockpit extends Cockpit {
 
+    SelenideElement appointmentsTodayElement = $(byText("Termine heute"));
 
     //TODO change css
     @Step("click Create new Customer")
@@ -53,9 +54,18 @@ public class WMFCockpit extends Cockpit {
     public SelenideElement getRandomAvantgardeElem() {
         return getAvantgardeElements().get(new RandomGenerator().getRandomNumber(0, getAvantgardeElements().size()));
     }
+
     //TODO change css
     @Step("get Appointments Today")
     public String getAppointmentsCountToday() {
-        return $(byText("Termine heute")).parent().$("div").text();
+        return appointmentsTodayElement.parent().$("div").text();
     }
+
+    //TODO change css
+    @Step("open Appointments Today")
+    public WMFAppointment openAppointmentsToday() {
+        appointmentsTodayElement.click();
+        return new WMFAppointment();
+    }
+
 }

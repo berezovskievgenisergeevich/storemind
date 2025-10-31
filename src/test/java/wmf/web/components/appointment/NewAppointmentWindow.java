@@ -2,7 +2,9 @@ package wmf.web.components.appointment;
 
 import io.qameta.allure.Step;
 import se.web.components.LoadingDialogWindow;
-import wmf.config.WMFConfig;
+import se.web.data.model.Salutation;
+import wmf.web.data.model.AppointmentModel;
+import wmf.web.data.model.AppointmentType;
 import wmf.web.pages.WMFCockpit;
 
 import static com.codeborne.selenide.Selectors.byText;
@@ -105,6 +107,34 @@ public class NewAppointmentWindow {
         $$(byText("Termin erstellen")).last().click();
         new LoadingDialogWindow().waitLoading();
         return new WMFCockpit();
+    }
+
+    public NewAppointmentWindow fillInAppointment(AppointmentModel appointment) {
+        return selectSalutation(appointment.getSalutation())
+                .enterName(appointment.getName())
+                .enterLastName(appointment.getLastName())
+                .enterEmail(appointment.getEmail())
+                .enterPhone(appointment.getPhone())
+                .clickAppointmentType()
+                .selectAppointment(appointment.getAppointmentType())
+                .enterNote(appointment.getNote())
+                .selectDayToday()
+                .selectTimeToday();
+
+    }
+
+    private NewAppointmentWindow selectSalutation(Salutation salutation) {
+        return (Salutation.He == salutation) ? selectHe() : selectShe();
+    }
+
+    @Step("select appointment type: {type}")
+    private NewAppointmentWindow selectAppointment(AppointmentType type) {
+        $("[data-value='" + type + "']").click();
+        return this;
+    }
+
+    public int getCreatedAppointmentCount() {
+        return $$("[class='MuiBox-root css-1lltzoj']").size();
     }
 
 
