@@ -6,10 +6,8 @@ import brax.helpers.BRAXCustomerProvider;
 import brax.helpers.BraxStoreProvider;
 import com.github.javafaker.Faker;
 import org.aeonbits.owner.ConfigFactory;
-import se.helpers.RandomGenerator;
 import se.web.components.Language;
 import se.web.data.model.Customer;
-import se.web.data.model.Salutation;
 import se.web.data.model.Store;
 
 import java.util.Locale;
@@ -26,4 +24,5 @@ public class BraxTestData {
     public final Language LANGUAGE_TO_SELECT = Language.Français;
     public final Customer SEARCH_CUSTOMER = BRAXCustomerProvider.getSearchCustomer();
     public final Customer CUSTOMER_AGE_LESS_18 = BRAXCustomerProvider.getCustomerWithAgeLess18();
+    public final Customer SEARCH_NOT_EXISTING_CUSTOMER = BRAXCustomerProvider.getNotExistingCustomer();
 }

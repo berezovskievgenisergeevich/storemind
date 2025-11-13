@@ -24,4 +24,9 @@ public class BRAXCustomerProvider {
         return new CustomerProvider().createNewRandomCustomerAgeLess18();
     }
 
+    public static Customer getNotExistingCustomer() {
+        return new Customer(Salutation.He, "3151020_000_000", "not_existing_customer", "not_existing_customer", "1234", "stad", "str", "1", "not_existing_customer@mail.com");
+
+    }
+
 }
