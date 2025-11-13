@@ -20,7 +20,7 @@ public class CreateNewCustomer {
 
     SelenideElement inputName = $("[data-testid='firstName-input']");
     SelenideElement inputCity = $("[data-testid='city-input']");
-    SelenideElement inputEmail = $("[data-testid='email-input']");
+    protected SelenideElement inputEmail = $("[data-testid='email-input']");
     SelenideElement inputStreetNr = $("[data-testid='streetNumber-input']");
     SelenideElement inputLastName = $("[data-testid='lastName-input']");
     SelenideElement inputStreet = $("[data-testid='street-input']");
@@ -106,7 +106,7 @@ public class CreateNewCustomer {
         return this;
     }
 
-    private void setValurInBirthdayList(String val) {
+    protected void setValurInBirthdayList(String val) {
         $("ul li[data-value='" + val + "']").click();
     }
 

@@ -1,4 +1,5 @@
 package brax.config;
+
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
@@ -101,4 +102,19 @@ public interface BraxLocalizationConfig extends Config {
 
     @Config.Key("monogram.store_order")
     String monogramCantBeDeliveredToStoreText();
+
+    @Config.Key("customer.error.birthday_empty")
+    String customerErrorBirthdayEmpty();
+
+    @Config.Key("customer.newsletter_message")
+    String customerNusletterMessage();
+
+    @Config.Key("customer.error.phone")
+    String customerErrorPhone();
+
+    @Config.Key("customer.error.mobile")
+    String customerErrorMobile();
+
+    @Config.Key("customer.error.select_calls")
+    String customerErrorSelectCalls();
 }

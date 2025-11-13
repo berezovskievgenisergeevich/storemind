@@ -19,6 +19,7 @@ public class LanguageSelection {
     }
 
     public void setLanguage(Language language) {
+        new LoadingDialogWindow().waitLoading();
         getLanguageSelectionWindow().$(language.selector).click();
     }
 

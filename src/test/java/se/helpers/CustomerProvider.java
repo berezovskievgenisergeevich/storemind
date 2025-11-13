@@ -16,7 +16,8 @@ import java.util.Locale;
 
 public class CustomerProvider {
     private final String ZIP_AT = "1234";
-    Faker faker = new Faker(new Locale("en-US"));
+    private final String PHONE_MASK = "+49151#######";
+    Faker faker = new Faker(new Locale("DE"));
 
     public static final se.web.data.model.Customer searchCustomer = new se.web.data.model.Customer(Salutation.He, "90000772", "automation", "ui_test", "1234", "stad", "str", "1", "automation_ui_test@mail.com");
     public static final se.web.data.model.Customer notExistingCustomer = new se.web.data.model.Customer(Salutation.He, "3151020", "automation", "not_existing_customer", "1234", "stad", "str", "1", "not_existing_customer@mail.com");
@@ -33,7 +34,7 @@ public class CustomerProvider {
                 email);
         customer.setBirthday(RandomGenerator.getRandomBirthdayMoreThen18());
         customer.setAdditionalAddress(faker.address().secondaryAddress());
-        customer.setPhone(faker.phoneNumber().phoneNumber());
+        customer.setPhone(faker.numerify(PHONE_MASK));
         return customer;
     }
 
