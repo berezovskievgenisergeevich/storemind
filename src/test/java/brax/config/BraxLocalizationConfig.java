@@ -123,4 +123,7 @@ public interface BraxLocalizationConfig extends Config {
 
     @Config.Key("catalog.filter_men")
     String catalogFilterMen();
+
+    @Config.Key("error.scanner.article_not_found")
+    String errorScannerArticleNotFound();
 }

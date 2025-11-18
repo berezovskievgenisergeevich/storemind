@@ -77,5 +77,24 @@ public class BRAXCockpitCatalogSectionTest extends BraxTest {
                 .shouldHave(text(testData.APP_TEXT.catalogFilterMen()));
     }
 
+    @Test
+    @Tags({@Tag("cockpit"), @Tag("catalog"), @Tag("regression"), @Tag("ui")})
+    @DisplayName("check search by Scanner")
+    void searchByScanner() {
+        new BRAXLogin().doLogin(testData.stores[0])
+                .searchArticleByScanner(testData.SEARCH_ARTICLE_EAN)
+                .focusToArticleInfoWindow().shouldHave(text(testData.SEARCH_ARTICLE_EAN));
+    }
+
+    @Test
+    @Tags({@Tag("cockpit"), @Tag("catalog"), @Tag("regression"), @Tag("ui")})
+    @DisplayName("check search by Scanner - invalid EAN")
+    void searchByScannerInvalidEan() {
+        new BRAXLogin().doLogin(testData.stores[0])
+                .openScanner().search(testData.NOT_EXISTING_EAN);
+        $("[data-testid='notification-text']")
+                .shouldHave(text(testData.APP_TEXT.errorScannerArticleNotFound()));
+    }
+
 
 }
