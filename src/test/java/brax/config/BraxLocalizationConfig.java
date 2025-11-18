@@ -117,4 +117,10 @@ public interface BraxLocalizationConfig extends Config {
 
     @Config.Key("customer.error.select_calls")
     String customerErrorSelectCalls();
+
+    @Config.Key("catalog.filter_women")
+    String catalogFilterWomen();
+
+    @Config.Key("catalog.filter_men")
+    String catalogFilterMen();
 }

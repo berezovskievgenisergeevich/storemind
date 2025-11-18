@@ -14,4 +14,16 @@ public class BRAXCockpit extends Cockpit {
         new LoadingDialogWindow().waitLoading();
         return new BRAXCreateNewCustomer();
     }
+
+    @Step("open Catalog for Women")
+    public BRAXCatalog openWomenCatalog() {
+        $("[data-testid='open-catalog-with-filter-Damen']").click();
+        return new BRAXCatalog();
+    }
+
+    @Step("open Catalog for Men")
+    public BRAXCatalog openMenCatalog() {
+        $("[data-testid='open-catalog-with-filter-Herren']").click();
+        return new BRAXCatalog();
+    }
 }

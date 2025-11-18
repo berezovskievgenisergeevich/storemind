@@ -13,12 +13,16 @@ import se.web.data.model.Store;
 import java.util.Locale;
 
 public class BraxTestData {
+
     BraxConfig projectConfig = ConfigFactory.create(BraxConfig.class, System.getProperties());
     public Store[] stores = BraxStoreProvider.stores;
     public final BraxLocalizationConfig APP_TEXT = ConfigFactory.create(BraxLocalizationConfig.class, System.getProperties());
 
     private final Faker faker = new Faker(new Locale("en-US"));
     public final String CUSTOMER_ID = projectConfig.getCustomerId();
+    public final String SEARCH_ARTICLE_NAME = "Storm";
+    public static final String SEARCH_ARTICLE_FULL_NO = "375408_90191600";
+    public static final String SEARCH_ARTICLE_FIRST_PARTS_OF_NO = "375408";
     public final String RANDOM_EMAIL = faker.internet().emailAddress();
     public final String RANDOM_PASS = faker.internet().password();
     public final Language LANGUAGE_TO_SELECT = Language.Français;
