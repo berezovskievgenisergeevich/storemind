@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 
 @Story("[UI] Login")
-public class LoginTest extends BraxTest {
+public class BRAXLoginTest extends BraxTest {
     @Test
     @Tags({@Tag("login"), @Tag("regression"), @Tag("ui")})
     @DisplayName("check First step authentification with valid Email and valid Password")

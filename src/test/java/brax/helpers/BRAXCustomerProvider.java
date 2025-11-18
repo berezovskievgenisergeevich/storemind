@@ -24,6 +24,13 @@ public class BRAXCustomerProvider {
         return new CustomerProvider().createNewRandomCustomerAgeLess18();
     }
 
+    public static Customer getEditCustomer() {
+        var customer = new Customer(Salutation.He, "KK00856641", "EditName", "EditLastName", "12345", "ort", "str", "1", "edit@mail.com");
+        customer.setBirthday(RandomGenerator.getRandomBirthdayMoreThen18());
+        customer.setPhone(faker.numerify(PHONE_MASK));
+        return customer;
+    }
+
     public static Customer getNotExistingCustomer() {
         return new Customer(Salutation.He, "3151020_000_000", "not_existing_customer", "not_existing_customer", "1234", "stad", "str", "1", "not_existing_customer@mail.com");
 

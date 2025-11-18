@@ -23,6 +23,7 @@ public class BraxTestData {
     public final String RANDOM_PASS = faker.internet().password();
     public final Language LANGUAGE_TO_SELECT = Language.Français;
     public final Customer SEARCH_CUSTOMER = BRAXCustomerProvider.getSearchCustomer();
+    public final Customer EDIT_CUSTOMER = BRAXCustomerProvider.getEditCustomer();
     public final Customer CUSTOMER_AGE_LESS_18 = BRAXCustomerProvider.getCustomerWithAgeLess18();
     public final Customer SEARCH_NOT_EXISTING_CUSTOMER = BRAXCustomerProvider.getNotExistingCustomer();
 }

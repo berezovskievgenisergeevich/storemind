@@ -3,7 +3,6 @@ package brax.web.pages;
 import io.qameta.allure.Step;
 import se.web.components.LoadingDialogWindow;
 import se.web.data.model.Store;
-import se.web.pages.Cockpit;
 import se.web.pages.Login;
 
 import static com.codeborne.selenide.Condition.text;
