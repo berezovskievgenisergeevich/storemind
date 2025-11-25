@@ -8,6 +8,13 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class BRAXCockpit extends Cockpit {
 
+    @Step("Add article to Shopping Cart By EAN {ean}")
+    public BRAXCockpit addArticleToShoppingCartByEAN(String ean) {
+        searchArticleByScanner(ean)
+                .clickAddArticleToShoppingCart();
+        return this;
+    }
+
     @Step("click Create new Customer")
     public BRAXCreateNewCustomer clickCreateNewCustomer() {
         $("[data-testid='customer-registration']").click();

@@ -11,7 +11,7 @@ import se.web.test.BaseTest;
 @Tag("BRAX")
 @Tag("all")
 public class BraxTest extends BaseTest {
-    BraxTestData testData = new BraxTestData();
+    protected BraxTestData testData = new BraxTestData();
     static BraxConfig projectConfig;
 
     @BeforeAll

@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import se.web.components.LoadingDialogWindow;
 import se.web.data.model.Customer;
 import se.web.pages.CreateNewCustomer;
+import se.web.pages.OrderConfirmation;
 
 import java.time.LocalDate;
 
@@ -130,6 +131,13 @@ public class BRAXCreateNewCustomer extends CreateNewCustomer {
     public BRAXCreateNewCustomer clickCreateWithoutBonus() {
         $("[data-testid='submit-without-bonus-points']").click();
         return this;
+    }
+
+    @Step("select customer and click 'Next'")
+    public BRAXOrderConfirmation clickNextInCreateNewOrder() {
+        new LoadingDialogWindow().waitLoading();
+        $("[data-testid='submit-button']").click();
+        return new BRAXOrderConfirmation();
     }
 
 

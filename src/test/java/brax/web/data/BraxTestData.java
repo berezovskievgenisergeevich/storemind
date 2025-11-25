@@ -24,6 +24,7 @@ public class BraxTestData {
     public static final String SEARCH_ARTICLE_FULL_NO = "375408_90191600";
     public static final String SEARCH_ARTICLE_FIRST_PARTS_OF_NO = "375408";
     public static final String SEARCH_ARTICLE_EAN = "4067833673302";
+    public static final String HOME_ARTICLE_EAN = "4064498087376";
     public static final String NOT_EXISTING_EAN = "0000_000_000";
     public final String RANDOM_EMAIL = faker.internet().emailAddress();
     public final String RANDOM_PASS = faker.internet().password();
