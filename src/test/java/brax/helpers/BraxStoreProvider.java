@@ -2,6 +2,8 @@ package brax.helpers;
 
 import se.web.data.model.Store;
 
+import java.util.Arrays;
+
 public class BraxStoreProvider {
     public static final Store[] stores = {
             new Store("Luedenscheid.Sterncenter@Brax.com", "Qwe12345!", "MASTERMATE", "BRAX Store Lüdenscheid"),
@@ -60,4 +62,8 @@ public class BraxStoreProvider {
             new Store("NULL", "Qwe12345!", "MASTERMATE", "BRAX Online-Shop")
 
     };
+
+    public static Store getStoreByName(String storeName) {
+        return Arrays.stream(stores).filter(store -> store.getName().equals(storeName)).findFirst().get();
+    }
 }

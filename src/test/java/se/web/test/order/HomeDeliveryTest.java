@@ -2,10 +2,7 @@ package se.web.test.order;
 
 import io.qameta.allure.Story;
 import lombok.val;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import se.web.components.OrderItem;
 import se.web.pages.*;
 import se.web.test.SeTest;
@@ -109,6 +106,7 @@ public class HomeDeliveryTest extends SeTest {
     }
 
     @Test
+    @Disabled("button deleted in SEID-196")
     @Tags({@Tag("order"), @Tag("home_order"), @Tag("regression"), @Tag("ui")})
     @DisplayName("delete Home Delivery order in Checkout")
     void deleteNewHomeDeliveryOrderInCheckout() {
@@ -118,6 +116,7 @@ public class HomeDeliveryTest extends SeTest {
     }
 
     @Test
+    @Disabled("button deleted in SEID-196")
     @Tags({@Tag("order"), @Tag("home_order"), @Tag("regression"), @Tag("ui")})
     @DisplayName("delete new Home Delivery Parked order in Checkout")
     void deleteNewHomeDeliveryParkedOrderInCheckout() throws Exception {
@@ -151,6 +150,7 @@ public class HomeDeliveryTest extends SeTest {
     }
 
     @Test
+    @Disabled("button deleted in SEID-196")
     @Tags({@Tag("order"), @Tag("home_order"), @Tag("regression"), @Tag("ui")})
     @DisplayName("delete new Home Delivery order in Shopping cart")
     void deleteNewHomeDeliveryParkedOrderInShoppingCart() {
@@ -159,6 +159,22 @@ public class HomeDeliveryTest extends SeTest {
                 .backToShoppingCart();
         new OrderConfirmation().deleteOrder();
         $("body").shouldHave(text(testData.APP_TEXT.cockpitTitle()));
+    }
+
+    @Test
+    @Tags({@Tag("order"), @Tag("home_order"), @Tag("regression"), @Tag("ui")})
+    @DisplayName("delete new Home Delivery Parked order")
+    void deleteNewHomeParkedOrder() throws Exception {
+        Cockpit cockpit = new Cockpit();
+        String orderId = loginAddArticleSelectCustomer()
+                .createParkedOrder();
+
+        cockpit.openInCreationTab()
+                .getOrder(orderId)
+                .openOrder()
+                .clickToDeleteIcon()
+                .clickDeleteOrder();
+        $("body").shouldNotHave(text(orderId));
     }
 
     @Test

@@ -32,6 +32,17 @@ public class BRAXShoppingCart extends ShoppingCart {
         return new BRAXCustomerSearch().searchCustomerAndOpenOrderConfirmationPage(customer);
     }
 
+ /*   @Override
+    @Step("Select Home delivery type and Existing customer")
+    public BRAXOrderConfirmation selectStoreDeliveryAndExistingCustomer(Customer customer) {
+        clickNext();
+        selectHomeDelivery();
+        selectExistingCustomer();
+        return new BRAXCustomerSearch().searchCustomerAndOpenOrderConfirmationPage(customer);
+    }*/
+
+
+
     public BRAXShoppingCart clickToShoppingCart() {
         $("[data-testid='bucket']").click();
         return this;

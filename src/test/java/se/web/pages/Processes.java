@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class Processes {
 
-    private final int WAIT_UNTIL_PROCESS_UPDATED = 7;
+    protected final int WAIT_UNTIL_PROCESS_UPDATED = 7;
 
 
     SelenideElement requestIcon = $("[data-testid='REQUESTED-icon']");
@@ -99,7 +99,7 @@ public class Processes {
      * @param loadingDialogWindow
      * @param orderId
      */
-    void waitUntilOrderChangeState(Scanner scanner, LoadingDialogWindow loadingDialogWindow, String orderId) {
+    protected void waitUntilOrderChangeState(Scanner scanner, LoadingDialogWindow loadingDialogWindow, String orderId) {
         sleep(9000);
         scanner.openScanner().search(orderId);
         loadingDialogWindow.waitLoading();

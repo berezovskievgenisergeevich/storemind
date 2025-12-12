@@ -38,6 +38,7 @@ public class OrderItem {
         return getOrder().$("[data-testid='order-status']").text();
     }
 
+
     public Order openOrder() throws Exception {
         getOrder().click();
         return new Order(id);

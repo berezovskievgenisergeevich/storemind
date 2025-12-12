@@ -2,10 +2,7 @@ package se.web.test.order;
 
 import io.qameta.allure.Story;
 import lombok.val;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import se.web.components.OrderItem;
 import se.web.data.model.Store;
 import se.web.pages.*;
@@ -174,6 +171,7 @@ public class StoreDeliveryTest extends SeTest {
     }
 
     @Test
+    @Disabled("button deleted in SEID-196")
     @Tags({@Tag("order"), @Tag("store_order"), @Tag("regression"), @Tag("ui")})
     @DisplayName("delete Store Delivery order in Checkout")
     void deleteNewStoreDeliveryOrderInCheckout() {
@@ -183,6 +181,7 @@ public class StoreDeliveryTest extends SeTest {
     }
 
     @Test
+    @Disabled("button deleted in SEID-196")
     @Tags({@Tag("order"), @Tag("store_order"), @Tag("regression"), @Tag("ui")})
     @DisplayName("delete new Store Delivery Parked order in Checkout")
     void deleteNewHomeDeliveryParkedOrderInCheckout() throws Exception {
@@ -204,6 +203,22 @@ public class StoreDeliveryTest extends SeTest {
 
     @Test
     @Tags({@Tag("order"), @Tag("store_order"), @Tag("regression"), @Tag("ui")})
+    @DisplayName("delete new Store Delivery Parked order")
+    void deleteNewS2SParkedOrder() throws Exception {
+        Cockpit cockpit = new Cockpit();
+        String orderId = loginAddArticleSelectCustomer()
+                .createParkedOrder();
+
+        cockpit.openInCreationTab()
+                .getOrder(orderId)
+                .openOrder()
+                .clickToDeleteIcon()
+                .clickDeleteOrder();
+        $("body").shouldNotHave(text(orderId));
+    }
+
+    @Test
+    @Tags({@Tag("order"), @Tag("store_order"), @Tag("regression"), @Tag("ui")})
     @DisplayName("create new Store Delivery Parked order in Shopping cart")
     void createNewStoreDeliveryParkedOrderInShoppingCart() {
         loginAddArticleSelectCustomer()
@@ -216,6 +231,7 @@ public class StoreDeliveryTest extends SeTest {
     }
 
     @Test
+    @Disabled("button deleted in SEID-196")
     @Tags({@Tag("order"), @Tag("store_order"), @Tag("regression"), @Tag("ui")})
     @DisplayName("delete new Store Delivery order in Shopping cart")
     void deleteNewStoreDeliveryParkedOrderInShoppingCart() {

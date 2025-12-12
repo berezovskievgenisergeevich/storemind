@@ -7,6 +7,7 @@ import se.web.components.Scanner;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class Cockpit {
 
@@ -15,6 +16,7 @@ public class Cockpit {
     public Login logOut() {
         $("[data-testid='MenuIcon']").click();
         $("[role='dialog']").$("[data-testid='change-store']").click();
+        sleep(500);
         return new Login();
     }
 

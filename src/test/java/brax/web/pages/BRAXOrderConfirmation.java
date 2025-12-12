@@ -28,10 +28,16 @@ public class BRAXOrderConfirmation extends OrderConfirmation {
     }
 
     @Step("change order type to Store")
-    public OrderConfirmation changeOrderTypeToStore(Customer customer) {
+    public BRAXOrderConfirmation changeOrderTypeToStore(Customer customer) {
         clickBackToShoppingCart()
                 .backToShoppingCartAndChangeDeliveryType();
         return new BRAXShoppingCart().selectStoreDeliveryAndExistingCustomer(customer);
+    }
+
+    @Step("create new Store delivery order")
+    public String createS2SOrder() {
+        clickCreateNewOrder();
+        return getOrderId();
     }
 
 }

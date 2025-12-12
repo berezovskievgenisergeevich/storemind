@@ -27,4 +27,16 @@ public class Scanner {
         return this;
     }
 
+    @Step("open Article scanner on current Request")
+    public Scanner openArticleScannerOnRequestWindow() {
+        $("[data-testid='scanner-article']").click();
+        return this;
+    }
+
+    @Step("open Track scanner on current Request")
+    public Scanner openTrackScannerOnRequestWindow() {
+        $("[data-testid='scanner-track']").click();
+        return this;
+    }
+
 }
