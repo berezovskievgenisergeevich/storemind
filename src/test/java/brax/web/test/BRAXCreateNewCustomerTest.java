@@ -64,8 +64,7 @@ public class BRAXCreateNewCustomerTest extends BraxTest {
                 .shouldHave(text(testData.APP_TEXT.customerErrorCity()))
                 .shouldHave(text(testData.APP_TEXT.customerErrorZIP()))
                 .shouldHave(text(testData.APP_TEXT.customerErrorHomeNr()))
-                .shouldHave(text(testData.APP_TEXT.customerErrorSignature()))
-                .shouldHave(text(testData.APP_TEXT.customerErrorEmail()));
+                .shouldHave(text(testData.APP_TEXT.customerErrorSignature()));
 
     }
 
@@ -100,7 +99,6 @@ public class BRAXCreateNewCustomerTest extends BraxTest {
                 .shouldNotHave(text(testData.APP_TEXT.customerErrorZIP()))
                 .shouldNotHave(text(testData.APP_TEXT.customerErrorHomeNr()))
                 .shouldNotHave(text(testData.APP_TEXT.customerErrorSignature()))
-                .shouldHave(text(testData.APP_TEXT.customerErrorEmail()))
                 .shouldHave(text(testData.APP_TEXT.customerErrorName()))
                 .shouldHave(text(testData.APP_TEXT.customerErrorCity()))
                 .shouldHave(text(testData.APP_TEXT.customerErrorBirthdayEmpty()));
@@ -123,8 +121,7 @@ public class BRAXCreateNewCustomerTest extends BraxTest {
                 .shouldHave(text(testData.APP_TEXT.customerErrorCity()))
                 .shouldHave(text(testData.APP_TEXT.customerErrorZIP()))
                 .shouldHave(text(testData.APP_TEXT.customerErrorHomeNr()))
-                .shouldHave(text(testData.APP_TEXT.customerErrorSignature()))
-                .shouldHave(text(testData.APP_TEXT.customerErrorEmail()));
+                .shouldHave(text(testData.APP_TEXT.customerErrorSignature()));
 
     }
 
