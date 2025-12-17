@@ -126,4 +126,9 @@ public interface BraxLocalizationConfig extends Config {
 
     @Config.Key("error.scanner.article_not_found")
     String errorScannerArticleNotFound();
+
+    @Config.Key("error.scanner.tracking_url")
+    String errorScannerTrackingUrl();
+
+
 }

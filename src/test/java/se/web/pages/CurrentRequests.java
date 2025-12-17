@@ -85,10 +85,9 @@ public class CurrentRequests {
         return this;
     }
 
-    //todo change css -> ticket
+
     @Step("open 'Closed' tab")
     public CurrentRequests openClosedTab() {
-        // $(byText("Abgeschlossen")).click();
         $("[data-testid='request-tab-archive']").click();
         return this;
     }

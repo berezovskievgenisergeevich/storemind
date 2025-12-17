@@ -33,6 +33,12 @@ public class Scanner {
         return this;
     }
 
+    @Step("open Tracking Url scanner on current Request")
+    public Scanner openTrackingUrlScannerOnRequestWindow() {
+        $("[data-testid='scanner-track']").click();
+        return this;
+    }
+
     @Step("open Track scanner on current Request")
     public Scanner openTrackScannerOnRequestWindow() {
         $("[data-testid='scanner-track']").click();

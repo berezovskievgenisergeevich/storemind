@@ -57,11 +57,10 @@ public class ArticleInfoWindow {
         return this;
     }
 
-    // todo change css -> MONOGRAM
-    public SelenideElement getMonogramRestrictionWindowDescription() {
 
+    public SelenideElement getMonogramRestrictionWindowDescription() {
         return $("[data-testid='notification-text']");
-        //return $$("[role='dialog']").get(1);
+
     }
 
     @Step("add monogram to article {monogram}")

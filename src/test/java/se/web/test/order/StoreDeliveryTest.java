@@ -113,9 +113,9 @@ public class StoreDeliveryTest extends SeTest {
     }
 
     @Test
-    @Tags({@Tag("order"), @Tag("home_order"), @Tag("regression"), @Tag("ui")})
+    @Tags({@Tag("order"), @Tag("store_order"), @Tag("regression"), @Tag("ui")})
     @DisplayName("create new Store Delivery order with Duplicate customer and 1 article")
-    void createNewHomeDeliveryOrderWithDuplicateCustomer() {
+    void createNewStoreDeliveryOrderWithDuplicateCustomer() {
         new Login().doLogin(testData.stores[0])
                 .addArticleToShoppingCartByEAN(testData.SEARCH_ARTICLE_EAN);
         CreateNewCustomer customer = new ShoppingCart()

@@ -13,6 +13,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class BRAXProcesses extends Processes {
 
+    public SelenideElement trackingButton = $("[data-testid='track-order-button']");
     SelenideElement confirmPackageButton = $("[data-testid='confirm-receival-button']");
 
     @Step("wait until S2S request created, open list with Requested Store and provide S2S request Store name")
