@@ -1,26 +1,23 @@
 package wmf.web.components.appointment;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
-import lombok.val;
 import org.aeonbits.owner.ConfigFactory;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.interactions.Actions;
 import wmf.config.WMFConfig;
 import wmf.helpers.AppointmentsProvider;
 import wmf.web.data.model.AppointmentModel;
 import wmf.web.data.model.AppointmentType;
 
-import java.awt.*;
-import java.awt.event.InputEvent;
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Selenide.*;
 
+/**
+ * wmf online - checks the robot script, so the class is not relevant
+ */
 public class WMFOnlineAppointment {
     WMFConfig projectConfig = ConfigFactory.create(WMFConfig.class, System.getProperties());
     public AppointmentModel appointment = AppointmentsProvider.getRandomAppointment();
@@ -71,7 +68,6 @@ public class WMFOnlineAppointment {
         $("[id='appointment-branch-search-button-8ae8c4693828245ae0697147b7d6d541']").shouldBe(enabled, Duration.ofSeconds(2)).click();
         $("[id='appointment-branch-search-result-inner-container-8ae8c4693828245ae0697147b7d6d541'] div").click();
         $("[name='appointment[day]']").selectOption(1);
-        //selectDayToday();
         executeJavaScript("arguments[0].removeAttribute('disabled');", $("[name='appointment[time]']"));
         $("[name='appointment[time]']").shouldBe(enabled, Duration.ofSeconds(2)).selectOption(1);
         selectAppointment(appointment.getAppointmentType());

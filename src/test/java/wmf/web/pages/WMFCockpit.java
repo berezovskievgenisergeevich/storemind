@@ -8,32 +8,28 @@ import se.web.pages.Cockpit;
 import se.web.pages.CustomerSearch;
 import wmf.web.components.appointment.NewAppointmentWindow;
 
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class WMFCockpit extends Cockpit {
 
-    SelenideElement appointmentsTodayElement = $(byText("Termine heute"));
+    SelenideElement appointmentsTodayElement = $("[data-testid='confirmed-appointments-link']");
 
-    //TODO change css
     @Step("click Create new Customer")
     public WMFCreateNewCustomer clickCreateNewCustomerAndLoginWithPopUp(String login, String pass) {
-        $(byText("Kunden anlegen")).click();
+        $("[data-testid='customer-registration']").click();
         return new WMFCreateNewCustomer(login, pass);
     }
 
-    //TODO change css
     @Step("click Search Customer")
     public CustomerSearch clickCustomerSearch() {
-        $(byText("Kunden suchen")).click();
+        $("[data-testid='customer-search']").click();
         return new CustomerSearch();
     }
 
-    //TODO change css
     @Step("open Catalog")
     public WMFCatalog openCatalog() {
-        $(byText("Katalog öffnen")).click();
+        $("[data-testid='open-catalog']").click();
         return new WMFCatalog();
     }
 
@@ -43,10 +39,9 @@ public class WMFCockpit extends Cockpit {
         return $$("[class='MuiBox-root css-rbtf7a'] ul li");
     }
 
-    //TODO change css
     @Step("click Create new Appointment")
     public NewAppointmentWindow clickCreateNewAppointment() {
-        $(byText("Termin erstellen")).click();
+        $("[data-testid='create-appointment-button']").click();
         return new NewAppointmentWindow();
     }
 
@@ -55,13 +50,11 @@ public class WMFCockpit extends Cockpit {
         return getAvantgardeElements().get(new RandomGenerator().getRandomNumber(0, getAvantgardeElements().size()));
     }
 
-    //TODO change css
     @Step("get Appointments Today")
     public String getAppointmentsCountToday() {
-        return appointmentsTodayElement.parent().$("div").text();
+        return appointmentsTodayElement.$("div").text();
     }
 
-    //TODO change css
     @Step("open Appointments Today")
     public WMFAppointment openAppointmentsToday() {
         appointmentsTodayElement.click();

@@ -7,22 +7,22 @@ import wmf.web.data.model.AppointmentModel;
 import wmf.web.data.model.AppointmentType;
 import wmf.web.pages.WMFCockpit;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class NewAppointmentWindow {
-    //TODO change CSS
     @Step("Select Salutation: She")
     public NewAppointmentWindow selectShe() {
-        $(byText("Frau *")).click();
+        $("[data-testid='salutation-MRS']").click();
         return this;
     }
 
-    //TODO change CSS
+
     @Step("Select Salutation: He")
     public NewAppointmentWindow selectHe() {
-        $(byText("Herr *")).click();
+        $("[data-testid='salutation-MR']").click();
         return this;
     }
 
@@ -51,18 +51,15 @@ public class NewAppointmentWindow {
         return this;
     }
 
-    //TODO change CSS
     @Step("Enter note: {note}")
     public NewAppointmentWindow enterNote(String note) {
-        $("[placeholder='Notizen hinzufügen...']").val(note);
+        $("[data-testid='note-textarea']").val(note);
         return this;
     }
 
-
-    //TODO change CSS
     @Step("Select Appointment Type")
     public NewAppointmentWindow clickAppointmentType() {
-        $("[id='mui-component-select-type']").click();
+        $("[data-testid='select-appointment-type']").click();
         return this;
     }
 
@@ -101,15 +98,15 @@ public class NewAppointmentWindow {
         return new DayTimeSelectionInAppointment().clickToTimeSelection().clickOk();
     }
 
-    //TODO change CSS
     @Step("click Create Appointment")
     public WMFCockpit clickCrateAppointment() {
-        $$(byText("Termin erstellen")).last().click();
+        $("[data-testid='submit-appointment-button']").click();
         new LoadingDialogWindow().waitLoading();
         return new WMFCockpit();
     }
 
     public NewAppointmentWindow fillInAppointment(AppointmentModel appointment) {
+        new LoadingDialogWindow().waitLoading();
         return selectSalutation(appointment.getSalutation())
                 .enterName(appointment.getName())
                 .enterLastName(appointment.getLastName())
@@ -134,7 +131,9 @@ public class NewAppointmentWindow {
     }
 
     public int getCreatedAppointmentCount() {
-        return $$("[class='MuiBox-root css-1lltzoj']").size();
+        new LoadingDialogWindow().waitLoading();
+        $("[data-testid='registered-appointment-row']").shouldBe(visible).shouldBe(interactable).should(exist);
+        return $$("[data-testid='registered-appointment-row']").size();
     }
 
 

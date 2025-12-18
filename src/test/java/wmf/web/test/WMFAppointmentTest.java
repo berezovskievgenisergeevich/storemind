@@ -2,10 +2,7 @@ package wmf.web.test;
 
 import io.qameta.allure.Story;
 import lombok.val;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import se.web.components.LoadingDialogWindow;
 import se.web.pages.Login;
 import wmf.helpers.AppointmentCountExtractor;
@@ -99,9 +96,10 @@ public class WMFAppointmentTest extends WMFTest {
     }
 
     @Test
+    @Disabled("wmf online - checks the robot script")
     @Tags({@Tag("appointment"), @Tag("regression"), @Tag("ui")})
     @DisplayName("check create new appointment in App and after that Confirm it")
-    void check() {
+    void createNewAppointmentWeb() {
         new Login().doLogin(testData.stores[0]);
         new WMFOnlineAppointment()
                 .setName()
@@ -110,10 +108,6 @@ public class WMFAppointmentTest extends WMFTest {
                 .setPhone()
                 .setNote()
                 .selectStore();
-
-        sleep(10000);
-     //   open("/");
-       // sleep(2000);
     }
 
 
