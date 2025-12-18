@@ -22,7 +22,7 @@ public class CustomerSectionTest extends WMFTest {
         new Login().doLogin(testData.stores[0]);
         new WMFCockpit().clickCustomerSearch()
                 .searchCustomerByNo(WMFCustomerProvider.editCustomer);
-        $("[data-testid='customer-details-title']").shouldHave(text(testData.APP_TEXT.customerTitle()));
+        $("[data-testid='page-title']").shouldHave(text(testData.APP_TEXT.customerTitle()));
         $("body").shouldHave(text(testData.SEARCH_CUSTOMER.getId()));
 
     }
@@ -46,7 +46,7 @@ public class CustomerSectionTest extends WMFTest {
         new Login().doLogin(testData.stores[0]);
         new WMFCockpit().clickCustomerSearch()
                 .searchCustomerByEmail(testData.SEARCH_CUSTOMER);
-        $("[data-testid='customer-details-title']").shouldHave(text(testData.APP_TEXT.customerTitle()));
+        $("[data-testid='page-title']").shouldHave(text(testData.APP_TEXT.customerTitle()));
         $("body").shouldHave(text(testData.SEARCH_CUSTOMER.getEmail()));
     }
 
@@ -73,7 +73,7 @@ public class CustomerSectionTest extends WMFTest {
                 .pressEnter();
         $("body").shouldHave(text(testData.APP_TEXT.advancedCustomerSearchTitle()));
         $("body").shouldHave(text(testData.SEARCH_MULTIPLE_CUSTOMERS.getName()));
-        $$("table tbody tr").forEach(it -> it.shouldHave(text(testData.SEARCH_MULTIPLE_CUSTOMERS.getLastName())));
+        $$("[data-testid='customer-row']").forEach(it -> it.shouldHave(text(testData.SEARCH_MULTIPLE_CUSTOMERS.getLastName())));
     }
 
     @Test
@@ -83,7 +83,7 @@ public class CustomerSectionTest extends WMFTest {
         new Login().doLogin(testData.stores[0]);
         new WMFCockpit().clickCustomerSearch().searchCustomerByScanner(testData.SEARCH_CUSTOMER.getId());
         $("body").shouldHave(text(testData.APP_TEXT.advancedCustomerSearchTitle()));
-        $("[data-testid='customer-details-title']").shouldHave(text(testData.APP_TEXT.customerTitle()));
+        $("[data-testid='page-title']").shouldHave(text(testData.APP_TEXT.customerTitle()));
         $("body").shouldHave(text(testData.SEARCH_CUSTOMER.getId()));
     }
 

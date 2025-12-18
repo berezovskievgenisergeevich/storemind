@@ -46,10 +46,8 @@ public class CustomerSearch {
         new LoadingDialogWindow().waitLoading();
     }
 
-    // todo change css
     @Step("Search Customer By Scanner. Customer Id is: {id}")
     public CustomerInfo searchCustomerByScanner(String id) {
-        //   $("[data-testid='customer-scanner']").click();
         new LoadingDialogWindow().waitLoading();
         $("[data-testid='scanner-icon']").click();
         new Scanner().search(id);
