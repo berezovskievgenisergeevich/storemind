@@ -44,9 +44,7 @@ public class WMFCatalogTest extends WMFTest {
         $("h2").shouldHave(text(expectedText));
     }
 
-    //TODO VLAD changes
     @Test
-    @Disabled
     @Tags({@Tag("catalog"), @Tag("regression"), @Tag("ui")})
     @DisplayName("check search article by Name")
     void searchArticleByName() {
@@ -66,23 +64,18 @@ public class WMFCatalogTest extends WMFTest {
         $("[id='infinite-scroll-area']").shouldHave(text(testData.APP_TEXT.catalogNoArticlesFoundText()));
     }
 
-    //TODO VLAD changes
     @Test
-    @Disabled
     @Tags({@Tag("catalog"), @Tag("regression"), @Tag("ui")})
     @DisplayName("check search article by Article No")
     void searchArticleByNo() {
         new Login().doLogin(testData.stores[0]);
         new WMFCockpit().openCatalog().search(testData.SEARCH_ARTICLE_FULL_NO);
-
         new Catalog().getAllArticles().first().shouldBe(interactable).click();
         new ArticleInfoWindow().focusToArticleInfoWindow()
                 .shouldHave(text(testData.SEARCH_ARTICLE_FULL_NO));
     }
 
-    //TODO VLAD changes
     @Test
-    @Disabled
     @Tags({@Tag("catalog"), @Tag("regression"), @Tag("ui")})
     @DisplayName("check search article by Scanner")
     void searchArticleByScanner() {
@@ -92,14 +85,12 @@ public class WMFCatalogTest extends WMFTest {
                 .shouldHave(text(testData.SEARCH_ARTICLE_EAN));
     }
 
-    //TODO VLAD changes
     @Test
-    @Disabled
     @Tags({@Tag("catalog"), @Tag("regression"), @Tag("ui")})
     @DisplayName("check search article by Scanner invalid EAN")
     void searchArticleByScannerInvalidEan() {
         new Login().doLogin(testData.stores[0]);
-        new WMFCockpit().openCatalog().searchArticleByScanner(testData.SEARCH_ARTICLE_INVALID_EAN);
+        new WMFCockpit().openCatalog().openScanner().search(testData.SEARCH_ARTICLE_INVALID_EAN);
         $("[role='dialog']").shouldHave(text(testData.APP_TEXT.articleNotFoundText()));
 
     }

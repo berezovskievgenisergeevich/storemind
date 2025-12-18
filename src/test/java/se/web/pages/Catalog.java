@@ -40,5 +40,6 @@ public class Catalog {
         return new Cockpit().searchArticleByScanner(searchString);
     }
 
+
 }
 
