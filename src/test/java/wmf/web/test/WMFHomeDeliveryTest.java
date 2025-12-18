@@ -17,9 +17,9 @@ import static com.codeborne.selenide.Selenide.$;
 public class WMFHomeDeliveryTest extends WMFTest {
     @Test
     @Tags({@Tag("order"), @Tag("home_order"), @Tag("regression"), @Tag("ui")})
-    @DisplayName("create new Home Delivery order with Existing customer and 1 article and Prepayment(Vorkasse)")
+    @DisplayName("create new Home Delivery order with Existing customer and 1 article")
     void createNewHomeDeliveryOrderExistingCustomer() {
-        String orderId = loginAddArticleSelectCustomer()
+        String orderId = loginAddArticleLowPriceSelectCustomer()
                 .checkLegalInfoCheckBox()
                 .clickCreateNewOrder()
                 .getOrderId();
@@ -31,6 +31,13 @@ public class WMFHomeDeliveryTest extends WMFTest {
     OrderConfirmation loginAddArticleSelectCustomer() {
         new Login().doLogin(testData.stores[0])
                 .addArticleToShoppingCartByEAN(testData.SEARCH_ARTICLE_EAN);
+        return new ShoppingCart().clickToShoppingCart()
+                .selectHomeDeliveryAndExistingCustomer(testData.SEARCH_CUSTOMER);
+    }
+
+    OrderConfirmation loginAddArticleLowPriceSelectCustomer() {
+        new Login().doLogin(testData.stores[0])
+                .addArticleToShoppingCartByEAN(testData.ARTICLE_LOW_PRICE_EAN);
         return new ShoppingCart().clickToShoppingCart()
                 .selectHomeDeliveryAndExistingCustomer(testData.SEARCH_CUSTOMER);
     }
