@@ -3,8 +3,6 @@ package brax.web.pages;
 import io.qameta.allure.Step;
 import se.web.components.LoadingDialogWindow;
 import se.web.data.model.Customer;
-import se.web.pages.CustomerSearch;
-import se.web.pages.OrderConfirmation;
 import se.web.pages.ShoppingCart;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -31,16 +29,6 @@ public class BRAXShoppingCart extends ShoppingCart {
         selectExistingCustomer();
         return new BRAXCustomerSearch().searchCustomerAndOpenOrderConfirmationPage(customer);
     }
-
- /*   @Override
-    @Step("Select Home delivery type and Existing customer")
-    public BRAXOrderConfirmation selectStoreDeliveryAndExistingCustomer(Customer customer) {
-        clickNext();
-        selectHomeDelivery();
-        selectExistingCustomer();
-        return new BRAXCustomerSearch().searchCustomerAndOpenOrderConfirmationPage(customer);
-    }*/
-
 
 
     public BRAXShoppingCart clickToShoppingCart() {

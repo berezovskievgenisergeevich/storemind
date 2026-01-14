@@ -196,4 +196,16 @@ public class BRAXCreateNewCustomerTest extends BraxTest {
 
     }
 
+    @Test
+    @Tags({@Tag("customer"), @Tag("regression"), @Tag("ui")})
+    @DisplayName("Email mandatory if Newsletter option is selected")
+    void checkEmailMandatoryIfNewsletterOptionSelected() {
+        new BRAXLogin().doLogin(testData.stores[0]).clickCreateNewCustomer()
+                .selectEmailCheckBox()
+                .selectLegalInfoCheckBox()
+                .clickRegisterCustomer()
+                .getVerificationErrorWindow()
+                .shouldHave(text(testData.APP_TEXT.customerErrorEmail()));
+    }
+
 }

@@ -92,6 +92,7 @@ public class BRAXCreateNewCustomer extends CreateNewCustomer {
 
     @Step("fill in email: {email}")
     public BRAXCreateNewCustomer setEmail(String email) {
+        cleanUpField(inputEmail);
         inputEmail.val(email);
         return this;
     }
